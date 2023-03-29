@@ -1,13 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import FirstPage from "./pages/FirstPage";
+import SecondPage from "./pages/SecondPage";
+import NoPage from "./pages/NoPage";
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="artist-website" element={<Home />} />
+          <Route path="page1" element={<FirstPage />} />
+          <Route path="page2" element={<SecondPage />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+
+      {/* <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          This is first page.
         </p>
         <a
           className="App-link"
@@ -18,8 +38,7 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
-  );
+    </div> */}
 }
 
 export default App;
